@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Anis Suhana | Aspiring Physical Design Engineer Portfolio</title>
+<meta name="description" content="Project portfolio of Anis Suhana binti Mohd Azmi, aspiring entry-level Physical Design Engineer. IC physical design with Fusion Compiler, digital logic in Verilog, analog circuits, machine learning and robotics, each with a full PDF report.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#07090C;
+  --card:#0E1218;
+  --card-hover:#131A23;
+  --line:#222C3A;
+  --text:#EEF2F7;
+  --muted:#9AA7B8;
+  --blue:#5AAEE8;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;color:var(--text);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:1.0625rem;line-height:1.65}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+/* ===== top: round picture left, name and about me right ===== */
+.intro{padding:72px 0 48px}
+.intro .wrap{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center}
+.photo{position:relative;width:300px;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--card);border:4px solid var(--blue);box-shadow:0 0 0 10px rgba(90,174,232,.14)}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.photo .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Sora,sans-serif;font-size:4rem;font-weight:700;color:var(--blue)}
+.photo .ph[hidden]{display:none}
+h1{font-family:Sora,sans-serif;font-size:clamp(1.5rem,2.6vw,2.3rem);line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
+@media (min-width:981px){h1{white-space:nowrap}}
+.role{font-family:Sora,sans-serif;font-size:1.2rem;font-weight:600;color:var(--blue);margin:0 0 22px}
+.about{max-width:40em;margin:0 0 14px}
+.about.muted{color:var(--muted)}
+.btns{display:flex;flex-wrap:nowrap;gap:10px;margin-top:26px}
+.btn{display:inline-block;padding:10px 16px;font-size:.93rem;white-space:nowrap;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--blue);color:var(--blue);background:transparent}
+.btn.primary{background:var(--blue);color:#07090C}
+.btn:hover{background:var(--text);border-color:var(--text);color:#07090C}
+
+/* ASIC flow */
+.flow{grid-column:1/-1;margin-top:8px;padding:22px 24px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+.flow-title{font-family:Sora,sans-serif;font-weight:600;margin:0 0 14px}
+.flow ol{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none;counter-reset:step}
+.flow li{counter-increment:step;display:flex;align-items:center;gap:8px;padding:5px 14px 5px 6px;border:1px solid rgba(90,174,232,.5);border-radius:999px;background:rgba(90,174,232,.08);font-size:.9rem;line-height:1.3}
+.flow li::before{content:counter(step);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--blue);color:#07090C;font-weight:700;font-size:.78rem}
+
+/* ===== projects: one continuous grid ===== */
+.projects{padding:40px 0 80px}
+h2{font-family:Sora,sans-serif;font-size:1.8rem;margin:0 0 24px;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:var(--radius);padding:28px}
+.card.wide{grid-column:1/-1}
+.card:hover{background:var(--card-hover);border-color:#34506B;border-top-color:var(--blue)}
+.card h3{font-family:Sora,sans-serif;font-size:1.25rem;line-height:1.25;margin:0 0 6px}
+.when{color:var(--muted);font-size:.92rem;margin:0 0 16px}
+.card p.desc{margin:0 0 16px}
+.card.wide p.desc{max-width:52em}
+.result{margin:0 0 16px;padding:10px 14px;border-left:3px solid var(--blue);background:rgba(90,174,232,.09);border-radius:0 6px 6px 0;font-size:.95rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:auto 0 20px;padding:0;list-style:none}
+.tags li{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:2px 9px}
+.pdfs{display:flex;flex-wrap:wrap;gap:10px}
+.pdf{display:inline-block;padding:9px 16px;border-radius:8px;border:1px solid var(--blue);color:var(--blue);font-weight:600;font-size:.95rem;text-decoration:none}
+.pdf:hover{background:var(--blue);color:#07090C}
+
+/* picture gallery for projects without a PDF report */
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.shots a{display:block;text-decoration:none;color:var(--muted)}
+.shots a[hidden]{display:none}
+.shots figure{margin:0}
+.shots img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:1px solid var(--line);background:var(--bg)}
+.shots a:hover img{border-color:var(--blue)}
+.shots figcaption{font-size:.8rem;line-height:1.35;margin-top:5px}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.92rem;background:#07090C}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between}
+
+@media (max-width:980px){
+  .btns{flex-wrap:wrap}
+  .intro{padding:40px 0 32px}
+  .intro .wrap{grid-template-columns:1fr;gap:32px;justify-items:start}
+  .photo{width:220px}
+  .grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+
+<!-- ============ TOP: picture + name + about me ============ -->
+<header class="intro">
+  <div class="wrap">
+    <div class="photo">
+      <!-- Your photo: images/profile.jpg -->
+      <img src="images/profile.jpg" alt="Photo of Anis Suhana" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <div class="ph" hidden aria-hidden="true">AS</div>
+    </div>
+    <div>
+      <h1>Anis Suhana binti Mohd Azmi</h1>
+      <p class="role">Aspiring Entry-level Physical Design Engineer</p>
+      <p class="about">Hello! I am a First Class Electronic Engineering graduate from UiTM. I built my base in digital logic, analog circuits and signal processing. Then I completed the Physical Design Program at the Penang Chip Design Academy (PCDA), Penang Skills Development Centre (PSDC). There I learned from CMOS and FinFET basics through the full ASIC design flow, using Synopsys Design Compiler, Fusion Compiler, PrimeTime and Formality. &#10024;</p>
+      <p class="about">I have now completed the Physical Design Program, and my certificate is below &#128522; I am excited to apply, explore and sharpen my knowledge on real projects, so that I can learn from experienced engineers and contribute value to the team.</p>
+      <p class="about muted">This page contains some of the projects I worked on during my bachelor's degree and my physical design training &#128578;</p>
+      <div class="btns">
+        <a class="btn primary" href="resume/Anis-Suhana-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <!-- Put your certificate at resume/PSDC-Certificate.pdf -->
+        <a class="btn" href="resume/PSDC-Certificate.pdf" target="_blank" rel="noopener">PSDC certificate (PDF)</a>
+        <a class="btn" href="mailto:anisya020308@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/anissuhana" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="flow">
+      <p class="flow-title">What I learned at PSDC, in order</p>
+      <ol>
+        <li>UNIX and Tcl</li>
+        <li>Basic electronic logic</li>
+        <li>CMOS and FinFET</li>
+        <li>Fabrication</li>
+        <li>ASIC classification and design flow</li>
+        <li>RTL design and logic synthesis</li>
+        <li>SDC design constraints</li>
+        <li>Design Compiler</li>
+        <li>Formality</li>
+        <li>DP flow</li>
+        <li>Floorplanning</li>
+        <li>Power grid</li>
+        <li>Placement</li>
+        <li>Clock tree synthesis</li>
+        <li>Routing</li>
+        <li>Static timing analysis (STA)</li>
+        <li>Sign off: timing</li>
+        <li>Sign off: DRC and LVS</li>
+        <li>Power intent and UPF</li>
+        <li>RM flow and scripting mini project</li>
+        <li>Bitcoin mini project</li>
+      </ol>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PROJECTS ============ -->
+<section class="projects" id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+
+    <div class="grid">
+
+      <article class="card">
+        <h3>Full Chip Floorplanning</h3>
+        <p class="when">Sep 2026, PSDC Physical Design Program</p>
+        <p class="desc">Full chip floorplans were built and checked against the design constraints. The die size and aspect ratio were defined, I/O pads were placed, and the bump configuration was planned. Power and ground pads and the power grid were also planned, and the RDL was routed for bump connections and clock nets, with differential routing used for the clock signals.</p>
+        <ul class="tags" aria-label="Tools"><li>Fusion Compiler</li><li>Floorplanning</li><li>Power grid</li><li>RDL routing</li></ul>
+        <div class="shots">
+          <a href="images/full-chip/full-chip-1.png" target="_blank" rel="noopener"><figure><img loading="lazy" src="images/full-chip/full-chip-1.png" alt="Full chip floorplan with die size and I/O pads" onerror="this.closest('a').hidden=true"><figcaption>Die size and I/O pads</figcaption></figure></a>
+          <a href="images/full-chip/full-chip-2.png" target="_blank" rel="noopener"><figure><img loading="lazy" src="images/full-chip/full-chip-2.png" alt="RDL routing for bumps and clock nets" onerror="this.closest('a').hidden=true"><figcaption>RDL routing</figcaption></figure></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>ORCA_TOP Block Implementation</h3>
+        <p class="when">Sep 2026, PSDC Physical Design Program</p>
+        <p class="desc">The ORCA_TOP floorplan was implemented in Synopsys Fusion Compiler. Fixed and movable macros were placed, all pins were put on the bottom side, and the power grid was planned. Utilization, congestion and data flow were then checked against the project constraints.</p>
+        <ul class="tags" aria-label="Tools"><li>Fusion Compiler</li><li>Macro placement</li><li>Pin placement</li><li>Congestion</li></ul>
+        <div class="shots">
+          <a href="images/orca-top/orca-1.png" target="_blank" rel="noopener"><figure><img loading="lazy" src="images/orca-top/orca-1.png" alt="ORCA_TOP floorplan with size ruler and macro placement" onerror="this.closest('a').hidden=true"><figcaption>Floorplan size and macro placement</figcaption></figure></a>
+          <a href="images/orca-top/orca-2.png" target="_blank" rel="noopener"><figure><img loading="lazy" src="images/orca-top/orca-2.png" alt="Pins placed on the bottom side" onerror="this.closest('a').hidden=true"><figcaption>Pins on bottom side</figcaption></figure></a>
+          <a href="images/orca-top/orca-3.png" target="_blank" rel="noopener"><figure><img loading="lazy" src="images/orca-top/orca-3.png" alt="Congestion map" onerror="this.closest('a').hidden=true"><figcaption>Congestion map</figcaption></figure></a>
+          <a href="images/orca-top/orca-4.png" target="_blank" rel="noopener"><figure><img loading="lazy" src="images/orca-top/orca-4.png" alt="Data flow flylines" onerror="this.closest('a').hidden=true"><figcaption>Data flow flylines</figcaption></figure></a>
+        </div>
+      </article>
+
+      <article class="card wide">
+        <h3>Bitcoin Project: Frequency Push and ECO</h3>
+        <p class="when">Final team project (team of six), PSDC Physical Design Program</p>
+        <p class="desc">A Bitcoin-inspired design (serial-to-parallel conversion, SRAM and a simplified SHA-256 block) was taken through physical implementation in Fusion Compiler by a team of six. The work started from a 1 GHz baseline, frequency sweeps were run, and three targets were shortlisted: 1.45, 1.55 and 1.63 GHz. After manual ECO, 1.55 GHz met its target. An RTL ECO was also done, and Formality was used to confirm that the design stayed logically equivalent. Frequency and recipe optimisation was the area handled in this project.</p>
+        <p class="result">Baseline 1.00 GHz, final selected frequency 1.55 GHz with the target met after manual ECO.</p>
+        <ul class="tags" aria-label="Tools"><li>Fusion Compiler</li><li>Formality</li><li>Frequency push</li><li>ECO</li><li>Tcl</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Bitcoin-Project-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card wide">
+        <h3>ANN Diagnostic Model for Watermelon Ripeness</h3>
+        <p class="when">Final Year Project, Jul 2026</p>
+        <p class="desc">Checking watermelon ripeness by cutting or tapping the fruit is slow and depends on the person. An Artificial Neural Network was built in MATLAB to grade yellow flesh watermelon ripeness (grade A or B) from Visible (751 nm) and Near Infrared (1058 nm) reflectance data. Three training functions (traingd, traingdm and traingda) were compared across 14 hidden neuron settings and judged with sensitivity, specificity and accuracy.</p>
+        <p class="result">Best result with traingda: 83.3% accuracy, 86.7% sensitivity, 80.0% specificity.</p>
+        <ul class="tags" aria-label="Tools"><li>MATLAB</li><li>ANN</li><li>VIS-NIR spectroscopy</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/FYP-Watermelon-ANN-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>1-Bit ALU in Verilog: Digital Logic Design</h3>
+        <p class="when">Computer Organization (ECE522), Oct 2025 to Mar 2026</p>
+        <p class="desc">A 1-bit ALU slice that performs XOR, ADD, AND and XNOR was studied. The full truth table was written, the Boolean expressions were derived and simplified, and the design was built in Verilog in two ways: with a 4-to-1 multiplexer and with a 2-to-4 decoder. Both versions were verified with waveforms and a self-checking testbench, and the outputs matched the truth table.</p>
+        <ul class="tags" aria-label="Tools"><li>Verilog HDL</li><li>Boolean algebra</li><li>Truth table</li><li>Multiplexer</li><li>Decoder</li><li>Testbench</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Computer-Organization-DigitalLogic-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Amplifier and Filter Circuit Design</h3>
+        <p class="when">Applied Electronics Circuit (ELE526), Jul 2025</p>
+        <p class="desc">An analog chain was designed to clean a weak 10 mV, 1 kHz signal: a 3-op-amp instrumentation amplifier, a precision rectifier, and a 5th-order Butterworth high-pass filter with a 1 MHz cutoff. Everything was simulated in LTspice and two op-amps were compared. The RH1028 gave a clearer waveform and better cutoff than the LM741.</p>
+        <p class="result">Instrumentation amplifier gain of around 100 with accurate rectification.</p>
+        <ul class="tags" aria-label="Tools"><li>LTspice</li><li>Op-amp</li><li>Instrumentation amplifier</li><li>Butterworth filter</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Applied-ELectronics-Amplifier-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card wide">
+        <h3>Autonomous Robot Navigation with ROS and LiDAR</h3>
+        <p class="when">Jun 2026</p>
+        <p class="desc">Ubuntu Linux and ROS were set up on the terminal so that a Bveeta Mini robot can build a map of its area and find its own position using LiDAR, Hector SLAM and RViz. A Python program with the DWA local planner was written so that the robot drives to three destinations and avoids obstacles on the way.</p>
+        <p class="result">The robot reached Points A, B and C by itself, without keyboard control.</p>
+        <ul class="tags" aria-label="Tools"><li>ROS</li><li>Ubuntu</li><li>LiDAR</li><li>Hector SLAM</li><li>DWA planner</li><li>RViz</li><li>Python</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Robotic-Navigation-ROSUbuntu-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Battery Health Prediction with Machine Learning</h3>
+        <p class="when">Group project, ECE629</p>
+        <p class="desc">The State of Health (SOH) of electric vehicle batteries was predicted from voltage, current and temperature, using data from battery management systems. Linear Regression and Random Forest models were built. The data showed that higher temperature goes with more capacity loss. Linear Regression was slightly more stable (MAE 0.1154), but both models had about 18% error (MAPE), so the report also discusses their limits and what to improve.</p>
+        <ul class="tags" aria-label="Tools"><li>Machine learning</li><li>Linear Regression</li><li>Random Forest</li><li>Data analysis</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/MachineLearning-BatteryHealth-Prediction.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>PID Tuning for a Flow Control Plant</h3>
+        <p class="when">Process Control course project</p>
+        <p class="desc">A real flow control process plant (flow controller FIC521, control valve FCV520 and flow transmitter FT521) was studied. The P&amp;ID was read, an empirical model of the process was built, different PID tunings were simulated, and the response was then tested on the real plant.</p>
+        <ul class="tags" aria-label="Tools"><li>PID control</li><li>Process control</li><li>P&amp;ID</li><li>Empirical modelling</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Process-Control-PIDTunning.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>SCADA-Based Smart Conveyor Sorting System</h3>
+        <p class="when">Industrial automation project</p>
+        <p class="desc">A conveyor that sorts parcels by weight and height automatically. It uses four sensors (proximity, load cell, ultrasonic height and IR photoelectric) and two pneumatic pushers. The ladder diagram uses timers and counters to move the pushers and the conveyor motor in order. The SCADA HMI screen shows real time status, parcel weight graphs and saves report data.</p>
+        <ul class="tags" aria-label="Tools"><li>SCADA</li><li>PLC ladder logic</li><li>HMI</li><li>Pneumatics</li><li>Sensors</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/SCADA-PLC-SmartConveyor-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Residential Grid-Connected Solar PV Design</h3>
+        <p class="when">Solar design project (EEE640)</p>
+        <p class="desc">A solar system was designed for a house in Seremban with a three-phase supply. The roof was measured, the PV module and inverter were chosen, the array was sized, the inverter voltage and current were matched, and the yearly energy was estimated. The design uses six Trina Solar 440 W modules (2.64 kWp) with a three-phase Huawei string inverter. The report also covers safety, regulations and sustainability.</p>
+        <p class="result">Estimated 3,333 kWh per year, specific yield about 1,263 kWh/kWp per year.</p>
+        <ul class="tags" aria-label="Tools"><li>PV system sizing</li><li>Inverter matching</li><li>Energy yield</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Solar-Design-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Children Falling Prevention System</h3>
+        <p class="when">Embedded system project, May 2024</p>
+        <p class="desc">A prototype that helps keep children safe in high-rise buildings, built on an STM32F446RE microcontroller. Ultrasonic sensors measure distance and infrared sensors detect movement. A Bluetooth module tells the caregiver's phone, and LEDs, a buzzer and a motor give alarms and close access.</p>
+        <ul class="tags" aria-label="Tools"><li>STM32F446RE</li><li>Ultrasonic sensor</li><li>Infrared sensor</li><li>Bluetooth</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Balcony-Prevention-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>Durian Grading with Signal Processing and AI</h3>
+        <p class="when">Team project</p>
+        <p class="desc">An ESP32 system that grades durian automatically. An ultrasonic sensor detects the fruit, an MQ-3 gas sensor checks the gas it gives off, and a camera image goes to a CNN model trained in Edge Impulse. The grade shows on an OLED and LEDs, and goes to the Blynk app for remote monitoring. The demo used tomatoes in place of durian.</p>
+        <ul class="tags" aria-label="Tools"><li>ESP32</li><li>Edge Impulse</li><li>CNN</li><li>MQ-3 sensor</li><li>Blynk</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Durian-Grade-Classify-AI.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>IoT Smart Home with Data Structures and Algorithms</h3>
+        <p class="when">Data Structures and Algorithms (ECE532)</p>
+        <p class="desc">A Python system to manage smart home devices. A linked list adds, removes and sorts the devices. A binary search tree finds sensors by type and reading. Graph algorithms (Kruskal, Prim and Dijkstra) find the shortest connection paths, with BFS and DFS for alternative paths, and hashing checks the data.</p>
+        <ul class="tags" aria-label="Tools"><li>Python</li><li>Linked list</li><li>Binary search tree</li><li>Graph algorithms</li><li>Hashing</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/DataStructure-Algorithms-Python.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card">
+        <h3>EEG Alpha Wave Filter with a FIR Filter</h3>
+        <p class="when">Digital Signal Processing (ESE563), Mar 2025</p>
+        <p class="desc">Brain (EEG) signals carry noise and mixed frequency bands. A window-method FIR filter was designed to keep the alpha waves (8 to 13 Hz) and remove the other bands, so the signal is clean for studying relaxation states.</p>
+        <ul class="tags" aria-label="Tools"><li>FIR filter</li><li>Window method</li><li>EEG</li><li>DSP</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Digital-Signal-Processing-Report.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+      <article class="card wide">
+        <h3>Fourier Transform, AM Modulation and Demodulation in MATLAB</h3>
+        <p class="when">Signal and System: Analysis and Applications</p>
+        <p class="desc">MATLAB and Simulink were used to explore the Fourier transform. Audio signals and a recorded voice were analysed in the frequency domain, amplitude modulation (AM) was built, and voice modulation and demodulation were done with filtering. A two-stage modulation case study was also completed.</p>
+        <ul class="tags" aria-label="Tools"><li>MATLAB</li><li>Simulink</li><li>Fourier transform</li><li>Amplitude modulation</li></ul>
+        <div class="pdfs"><a class="pdf" href="reports/Furior-Transform-Matlab-Project_.pdf" target="_blank" rel="noopener">Read report (PDF)</a></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Anis Suhana binti Mohd Azmi</span>
+    <span>Penang, Malaysia</span>
+  </div>
+</footer>
+
+</body>
+</html>
